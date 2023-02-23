@@ -1,0 +1,37 @@
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+- name: Copy nginx config file
+  ansible.builtin.template:
+    src: test_site.j2
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy cert
+  ansible.builtin.copy:
+    src: nginx-selfsigned.crt
+    dest: "{{ ssl_cert }}"
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy key
+  ansible.builtin.copy:
+    src: nginx-selfsigned.key
+    dest: "{{ ssl_key }}"
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy index file
+  ansible.builtin.copy:
+    src: index.php
+    dest: "{{ root }}/"
+    owner: root
+    group: root
+    mode: '0644'
+- name: Restart nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

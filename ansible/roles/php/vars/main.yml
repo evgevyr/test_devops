@@ -1,0 +1,16 @@
+pool_name: test
+pool_user: www-data
+pool_group: www-data
+listen_owner: www-data
+listen_group: www-data
+listen_mode: '0660'
+pm: dynamic
+pm_max_children: 5
+pm_start_servers: 2
+pm_min_spare_servers: 1
+pm_max_spare_servers: 3
+pm_max_requests: 500
+php_flag_display_errors: off
+php_admin_value_error_log: /var/log/fpm-php.www.log
+php_admin_flag_log_errors: on
+php_admin_value_memory_limit: 32M

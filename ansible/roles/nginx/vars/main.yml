@@ -1,0 +1,5 @@
+https_enable: true
+server_name: www.test.com test.com
+ssl_key: /etc/ssl/private/nginx-selfsigned.key
+ssl_cert: /etc/ssl/certs/nginx-selfsigned.crt
+root: /var/www/test

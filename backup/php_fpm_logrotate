@@ -1,0 +1,11 @@
+/var/log/php-fpm.log {
+    daily
+    compress
+    rotate 3
+    missingok
+    notifempty
+    nocreate
+    postrotate
+        cat /dev/null > php8.1-fpm.log
+    endscript
+}

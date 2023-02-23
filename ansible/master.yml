@@ -1,0 +1,6 @@
+- name: Deploy web server
+  hosts: web
+  become: true
+  roles:
+    - nginx
+    - php
